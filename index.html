@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТуваТур - Главная</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ТуваТур</div>
+        <p>Открой для себя красоту Республики Тыва</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="tours.html">Туры</a></li>
+            <li><a href="guides.html">Гиды</a></li>
+            <li><a href="about.html">Информация о турах</a></li>
+            <li><a href="contact.html">Бронь туров</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Незабываемые туры по Республике Тыва</h1>
+            <p>Откройте для себя уникальную природу, культуру и традиции тувинского народа с нашими профессиональными гидами</p>
+            <a href="tours.html" class="btn">Выбрать тур</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section>
+            <h2>Актуальные туры сейчас</h2>
+            <div class="tours" id="featured-tours">
+                <!-- Featured tours will be loaded by JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="tours.html" class="btn">Все туры</a>
+            </div>
+        </section>
+        
+   
+        
+        <section class="about-preview">
+            <h2>Республика Тыва</h2>
+            <p>Тыва - удивительный регион в самом центре Азии, где сохранились уникальные природные ландшафты и древние традиции кочевых народов. Это земля горлового пения, буддийских монастырей и бескрайних степей.</p>
+            <div class="text-center">
+                <a href="about.html" class="btn">Узнать больше</a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2025 ТуваТур - Туры по Республике Тыва</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>Кызыл, ул. Ленина, 123</p>
+        <p>+7 999 179 7517, info@tuvatour.ru</p>
+    </footer>
+    
+    <script src="main.js"></script>
+    <script>
+        // Load featured tours and guides on homepage
+        window.onload = function() {
+            loadFeaturedTours();
+            loadFeaturedGuides();
+        };
+        
+        function loadFeaturedTours() {
+            const container = document.getElementById('featured-tours');
+            // Show first 3 tours
+            const featuredTours = tours.slice(0, 3);
+            
+            featuredTours.forEach(tour => {
+                container.innerHTML += `
+                    <div class="tour-card">
+                        <div class="tour-img">
+                            <img src="${tour.image}" alt="${tour.title}">
+                        </div>
+                        <div class="tour-info">
+                            <h3>${tour.title}</h3>
+                            <p>${tour.description}</p>
+                            <p class="tour-price">${tour.price}</p>
+                            <a href="contact.html?tour=${tour.id}" class="btn">Забронировать</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        
+        function loadFeaturedGuides() {
+            const container = document.getElementById('featured-guides');
+            // Show first 2 guides
+            const featuredGuides = guides.slice(0, 2);
+            
+            featuredGuides.forEach(guide => {
+                let stars = '';
+                for (let i = 0; i < guide.rating; i++) {
+                    stars += '★';
+                }
+                
+                container.innerHTML += `
+                    <div class="guide-card">
+                        <div class="guide-img">
+                            <img src="${guide.image}" alt="${guide.name}">
+                        </div>
+                        <div class="guide-info">
+                            <h3>${guide.name}</h3>
+                            <p>${guide.specialty}</p>
+                            <p>Опыт: ${guide.experience}</p>
+                            <div class="guide-rating">${stars}</div>
+                            <a href="contact.html" class="btn">Заказать тур</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

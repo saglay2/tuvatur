@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТуваТур - Бронирование</title>
+     <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ТуваТур</div>
+        <p>Открой для себя красоту Республики Тыва</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="tours.html">Туры</a></li>
+            <li><a href="guides.html">Гиды</a></li>
+            <li><a href="about.html">Информация о турах</a></li>
+            <li><a href="contact.html">Бронь туров</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>Форма бронирования тура</h1>
+
+        <form id="booking-form" autocomplete="off">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" placeholder="Ваше имя" required minlength="2">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tour">Выберите тур:</label>
+                <select id="tour" name="tour" required>
+                    <option value="" disabled selected>-- Выберите тур --</option>
+                </select>
+                <div id="tour-info" class="tour-info" style="display: none;">
+                    <p id="tour-description"></p>
+                    <p>Длительность: <span id="tour-duration"></span></p>
+                    <p>Цена: <span id="tour-price" class="price"></span></p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Дата тура:</label>
+                <input type="date" id="date" name="date" required>
+                <div id="date-info" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="people">Количество человек:</label>
+                <input type="number" id="people" name="people" min="1" max="20" value="1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Комментарий (необязательно):</label>
+                <textarea id="message" name="message" rows="4" placeholder="Ваши пожелания или вопросы"></textarea>
+            </div>
+            
+            <button type="submit">Забронировать</button>
+            <button type="button" id="save-btn" class="save-btn">Сохранить данные</button>
+        </form>
+    </main>
+    
+    <!-- Модальное окно подтверждения -->
+    <div id="verification-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Подтверждение бронирования</h2>
+                <span class="close">&times;</span>
+            </div>
+            <p>Мы отправили код подтверждения на ваш email и SMS. Пожалуйста, введите его ниже:</p>
+            
+            <div class="verification-code">
+                <input type="text" maxlength="1" id="code1" data-next="code2">
+                <input type="text" maxlength="1" id="code2" data-prev="code1" data-next="code3">
+                <input type="text" maxlength="1" id="code3" data-prev="code2" data-next="code4">
+                <input type="text" maxlength="1" id="code4" data-prev="code3">
+            </div>
+            
+            <div class="timer" id="timer">01:00</div>
+            
+            <div class="resend-link">
+                <a id="resend-code">Отправить код повторно</a>
+            </div>
+            
+            <button type="button" id="verify-btn">Подтвердить</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 ТуваТур - Туры по Республике Тыва</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>Кызыл, ул. Ленина, 123</p>
+        <p>+7 999 179 7517, info@tuvatour.ru</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+<script>
+    // document.querySelector('.menu-toggle').addEventListener('click', function() {
+    //     document.querySelector('nav').classList.toggle('active');
+    // });
+</script>
+</html>
